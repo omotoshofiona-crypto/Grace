@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vantage Security | Safeguard what matters most</title>
+<meta name="description" content="Vantage Security provides smart, round-the-clock private security for homes, businesses and events.">
+<meta name="theme-color" content="#0879FF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --bg:#2C2A4C;
+  --bg-2:#242243;
+  --bg-3:#1B1935;
+  --surface:rgba(255,255,255,.05);
+  --blue:#0879FF;
+  --blue-soft:#5AA4FF;
+  --text:#FFFFFF;
+  --muted:#B9B6D6;
+  --line:rgba(255,255,255,.13);
+  --radius-lg:32px;
+  --radius-md:22px;
+  --radius-pill:999px;
+  --font:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --gutter:clamp(20px,5vw,48px);
+  --max:1200px;
+  --section:clamp(72px,10vw,140px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font);font-size:1.0625rem;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+svg{display:block;max-width:100%}
+ul{list-style:none}
+:focus-visible{outline:3px solid var(--blue-soft);outline-offset:4px;border-radius:8px}
+::selection{background:var(--blue);color:#fff}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============ Buttons ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 28px;border-radius:var(--radius-pill);
+  font-weight:700;font-size:1rem;line-height:1.2;border:0;cursor:pointer;
+  transition:transform .2s,background .2s,box-shadow .2s;
+}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 30px -10px rgba(8,121,255,.8)}
+.btn-primary:hover{background:#2D8DFF;transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(8,121,255,.9)}
+.btn-lg{padding:18px 34px;font-size:1.05rem}
+.btn svg{width:18px;height:18px;transition:transform .2s}
+.btn:hover svg{transform:translate(2px,-2px)}
+
+/* ============ Nav ============ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(44,42,76,.78);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;letter-spacing:-.02em}
+.logo-mark{width:32px;height:32px}
+.nav-links{display:flex;gap:36px;font-weight:500;color:var(--muted)}
+.nav-links a{transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:11px 22px;font-size:.95rem}
+.menu-btn{
+  display:none;background:var(--surface);border:1px solid var(--line);color:#fff;
+  width:44px;height:44px;border-radius:14px;cursor:pointer;place-items:center;
+}
+.menu-btn svg{width:22px;height:22px}
+.menu-btn .x{display:none}
+.menu-btn[aria-expanded="true"] .bars{display:none}
+.menu-btn[aria-expanded="true"] .x{display:block}
+
+/* ============ Hero ============ */
+.hero{position:relative;overflow:hidden;text-align:center;padding:clamp(56px,8vw,104px) 0 0}
+.hero::before{
+  content:"";position:absolute;left:50%;top:-20%;width:min(1100px,140vw);height:720px;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(8,121,255,.28),transparent 70%);pointer-events:none;
+}
+.label{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;border:1px solid var(--line);border-radius:var(--radius-pill);
+  background:var(--surface);font-weight:600;font-size:.95rem;color:var(--muted);
+}
+.label svg{width:16px;height:16px;color:var(--blue-soft)}
+.hero h1{
+  position:relative;margin:28px auto 0;max-width:13ch;
+  font-size:clamp(3rem,9.5vw,8rem);font-weight:800;line-height:.98;letter-spacing:-.045em;
+}
+.hero h1 .swoosh{display:block;width:min(280px,50%);margin:14px auto 0;color:var(--blue)}
+.hero-actions{margin-top:36px;position:relative}
+.hero-sub{
+  position:relative;margin:28px auto 0;max-width:34ch;
+  font-size:clamp(1.1rem,2vw,1.35rem);color:var(--muted);line-height:1.5;
+}
+.hero-sub strong{color:#fff;font-weight:600}
+.hero-arrow{display:block;width:44px;height:64px;margin:24px auto 0;color:var(--blue-soft);opacity:.9}
+
+/* Drone stage (hero visual + glow) */
+.stage{position:relative;margin:-4px auto 0;width:min(760px,100%);aspect-ratio:16/9;display:grid;place-items:center}
+.stage .glow{
+  position:absolute;left:50%;bottom:4%;width:78%;height:30%;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(8,121,255,.75),rgba(8,121,255,.15) 60%,transparent 75%);
+  border-radius:50%;filter:blur(10px);
+  animation:pulse 4s ease-in-out infinite;
+}
+.stage .drone{position:relative;width:min(78%,560px);animation:float 5s ease-in-out infinite;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+@keyframes float{0%,100%{transform:translateY(-3%)}50%{transform:translateY(5%)}}
+@keyframes pulse{0%,100%{opacity:.55;transform:translateX(-50%) scale(.92)}50%{opacity:1;transform:translateX(-50%) scale(1.06)}}
+
+/* ============ Sections ============ */
+section{padding:var(--section) 0}
+.alt{background:var(--bg-2)}
+h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:800;line-height:1.08;letter-spacing:-.035em}
+.lead{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:56ch}
+.stack > * + *{margin-top:20px}
+
+.intro{text-align:center}
+.intro h2{max-width:16ch;margin-inline:auto}
+.intro .lead{margin:24px auto 0;max-width:62ch}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,88px);align-items:center}
+.split.reverse .media{order:-1}
+
+.checks{display:grid;gap:14px;margin-top:28px}
+.checks li{display:flex;align-items:center;gap:14px;font-weight:600}
+.checks .tick{
+  flex:none;width:30px;height:30px;border-radius:50%;
+  background:rgba(8,121,255,.2);color:var(--blue-soft);display:grid;place-items:center;
+}
+.checks .tick svg{width:16px;height:16px}
+
+/* Placeholders for photography */
+.ph{
+  position:relative;overflow:hidden;isolation:isolate;
+  border-radius:var(--radius-lg);border:1px solid var(--line);
+  background:
+    linear-gradient(135deg,rgba(8,121,255,.35),rgba(44,42,76,.2) 55%,rgba(90,164,255,.18)),
+    var(--bg-3);
+  display:grid;place-items:center;text-align:center;
+}
+.ph::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(closest-side,#000,transparent);
+  -webkit-mask-image:radial-gradient(closest-side,#000,transparent);
+}
+.ph-inner{display:grid;gap:10px;justify-items:center;padding:24px;color:var(--muted);font-weight:600;font-size:.95rem}
+.ph-inner svg{width:44px;height:44px;color:var(--blue-soft)}
+.ph.ratio-43{aspect-ratio:4/3}
+.ph.ratio-54{aspect-ratio:5/4}
+.ph.wide{aspect-ratio:21/9}
+.ph.card{aspect-ratio:4/3;align-content:end;place-items:end start;text-align:left;transition:transform .3s,border-color .3s}
+.ph.card:hover{transform:translateY(-6px);border-color:rgba(90,164,255,.6)}
+
+/* Drone in split */
+.drone-panel{
+  position:relative;border-radius:var(--radius-lg);border:1px solid var(--line);
+  background:radial-gradient(closest-side at 50% 60%,rgba(8,121,255,.35),transparent 75%),var(--bg-3);
+  aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;
+}
+.drone-panel .drone{width:80%}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,40px);margin-top:clamp(40px,6vw,72px)}
+.stat{padding-top:24px;border-top:1px solid var(--line)}
+.stat b{display:block;font-size:clamp(2.4rem,6vw,4.75rem);font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff}
+.stat span{display:block;margin-top:10px;color:var(--muted);font-weight:500}
+
+.expertise-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,88px);align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:clamp(36px,5vw,64px)}
+.card-title{
+  padding:20px 24px;margin:20px;border-radius:16px;
+  background:rgba(27,25,53,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-weight:700;font-size:1.15rem;
+}
+
+/* CTA */
+.cta{text-align:center;position:relative;overflow:hidden}
+.cta::before{
+  content:"";position:absolute;left:50%;top:50%;width:900px;height:500px;transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side,rgba(8,121,255,.3),transparent 72%);pointer-events:none;
+}
+.cta .wrap{position:relative}
+.cta h2{font-size:clamp(2.4rem,7vw,5.5rem);letter-spacing:-.04em;max-width:14ch;margin:0 auto}
+.cta .lead{margin:22px auto 36px}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.95rem}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-links{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.foot-links a{transition:color .2s}
+.foot-links a:hover{color:#fff}
+.social{display:flex;gap:12px}
+.social a{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+  display:grid;place-items:center;transition:background .2s,border-color .2s,color .2s;
+}
+.social a:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.social svg{width:18px;height:18px}
+
+/* ============ Responsive ============ */
+@media (max-width:900px){
+  .split,.expertise-head,.cards{grid-template-columns:1fr}
+  .split.reverse .media{order:0}
+  .drone-panel{aspect-ratio:4/3}
+}
+@media (max-width:760px){
+  .menu-btn{display:grid}
+  .nav-cta{display:none}
+  .nav-links{
+    position:absolute;left:0;right:0;top:72px;
+    flex-direction:column;gap:0;padding:8px var(--gutter) 20px;
+    background:var(--bg);border-bottom:1px solid var(--line);
+    display:none;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:16px 0;border-top:1px solid var(--line);font-size:1.1rem;color:#fff}
+  .nav-links a:first-child{border-top:0}
+  .nav-links .mobile-cta{display:inline-flex;margin-top:12px;border-top:0;color:#fff;justify-content:center}
+}
+@media (min-width:761px){.nav-links .mobile-cta{display:none}}
+@media (max-width:520px){
+  .stats{grid-template-columns:1fr;gap:20px}
+  .stat{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .stat span{margin-top:0}
+  .ph.wide{aspect-ratio:4/3}
+  .foot{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .stage .drone,.stage .glow{animation:none}
+  .btn,.ph.card{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Shared SVG symbols: drone illustration + icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4A4880"/><stop offset="1" stop-color="#1B1935"/>
+    </linearGradient>
+    <linearGradient id="gArm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3B3968"/><stop offset="1" stop-color="#201E3D"/>
+    </linearGradient>
+    <radialGradient id="gLens" cx=".35" cy=".35" r=".8">
+      <stop offset="0" stop-color="#9CCBFF"/><stop offset=".45" stop-color="#0879FF"/><stop offset="1" stop-color="#06306B"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Drone: replace with a real product photo or render if you have one -->
+  <symbol id="drone" viewBox="0 0 600 340">
+    <!-- arms -->
+    <path d="M300 170 L90 96" stroke="url(#gArm)" stroke-width="16" stroke-linecap="round"/>
+    <path d="M300 170 L510 96" stroke="url(#gArm)" stroke-width="16" stroke-linecap="round"/>
+    <path d="M300 170 L130 236" stroke="url(#gArm)" stroke-width="16" stroke-linecap="round"/>
+    <path d="M300 170 L470 236" stroke="url(#gArm)" stroke-width="16" stroke-linecap="round"/>
+    <!-- motors + rotors -->
+    <g fill="#26234A" stroke="#5AA4FF" stroke-opacity=".5">
+      <ellipse cx="90" cy="96" rx="16" ry="10"/><ellipse cx="510" cy="96" rx="16" ry="10"/>
+      <ellipse cx="130" cy="236" rx="16" ry="10"/><ellipse cx="470" cy="236" rx="16" ry="10"/>
+    </g>
+    <g fill="#5AA4FF" fill-opacity=".22" stroke="#5AA4FF" stroke-opacity=".6">
+      <ellipse cx="90" cy="88" rx="74" ry="12"/><ellipse cx="510" cy="88" rx="74" ry="12"/>
+      <ellipse cx="130" cy="228" rx="74" ry="12"/><ellipse cx="470" cy="228" rx="74" ry="12"/>
+    </g>
+    <!-- body -->
+    <ellipse cx="300" cy="170" rx="96" ry="52" fill="url(#gBody)" stroke="#5AA4FF" stroke-opacity=".5"/>
+    <path d="M222 160 Q300 120 378 160" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="300" cy="170" r="10" fill="#0879FF"/>
+    <!-- camera gimbal -->
+    <rect x="276" y="208" width="48" height="36" rx="14" fill="#1B1935" stroke="#5AA4FF" stroke-opacity=".5"/>
+    <circle cx="300" cy="228" r="13" fill="url(#gLens)"/>
+    <circle cx="295" cy="223" r="3.5" fill="#fff" fill-opacity=".8"/>
+    <!-- landing legs -->
+    <path d="M250 214 L232 262 M350 214 L368 262" stroke="#3B3968" stroke-width="7" stroke-linecap="round"/>
+    <path d="M220 264 H246 M354 264 H380" stroke="#3B3968" stroke-width="7" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5l2.4 7.1 7.1 2.4-7.1 2.4L12 20.5l-2.4-7.1L2.5 11l7.1-2.4L12 1.5zM19 15.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M8 7h9v9"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 9"/></g></symbol>
+</svg>
+
+<!-- ============ Navigation ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <!-- Swap the mark below for your real logo -->
+    <a href="#top" class="logo" aria-label="Vantage Security home">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 2l12 4.5v8.2c0 7.3-4.9 12.6-12 15.3C8.9 27.3 4 22 4 14.7V6.5L16 2z" fill="#0879FF"/>
+        <path d="M10.5 15.5l4 4 7.5-8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Vantage
+    </a>
+    <nav aria-label="Primary">
+      <div class="nav-links" id="menu">
+        <a href="#why">Why us</a>
+        <a href="#learn">Learn</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary mobile-cta">Get started today</a>
+      </div>
+    </nav>
+    <a href="#contact" class="btn btn-primary nav-cta">Get started today</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ Hero ============ -->
+  <div class="hero">
+    <div class="wrap">
+      <span class="label"><svg aria-hidden="true"><use href="#i-sparkle"/></svg>Innovation. Precision.</span>
+
+      <h1>
+        Security: The Vantage Way
+        <!-- curved line accent -->
+        <svg class="swoosh" viewBox="0 0 280 24" fill="none" aria-hidden="true">
+          <path d="M4 18 C 70 2, 150 2, 276 14" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </h1>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg">Let's get started <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <p class="hero-sub">Safeguard what matters most. <strong>Unleash innovation</strong> with Vantage security.</p>
+
+      <!-- arrow accent pointing to the drone -->
+      <svg class="hero-arrow" viewBox="0 0 44 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 4 C 40 14, 4 36, 22 58"/><path d="M12 48 L22 58 L32 46"/>
+      </svg>
+
+      <div class="stage">
+        <div class="glow" aria-hidden="true"></div>
+        <!-- Hero visual: replace with a real security drone image -->
+        <svg class="drone" role="img" aria-label="Illustration of a Vantage security drone hovering"><use href="#drone"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Delivering security solutions ============ -->
+  <section id="why" class="intro" aria-labelledby="deliver-h">
+    <div class="wrap">
+      <h2 id="deliver-h">Delivering security solutions</h2>
+      <p class="lead">Your home, your business and the people you love deserve protection that never switches off. Vantage combines trained people with smart technology to guard what you own and give you real peace of mind.</p>
+    </div>
+  </section>
+
+  <!-- ============ Unleash security innovation ============ -->
+  <section id="learn" class="alt" aria-labelledby="innovation-h">
+    <div class="wrap split">
+      <div>
+        <h2 id="innovation-h">Unleash security innovation</h2>
+        <p class="lead" style="margin-top:20px">We stay ahead of threats by using the latest tools. Our teams fit your property with modern surveillance, access control and intrusion detection that work together and adapt as your needs change.</p>
+        <ul class="checks">
+          <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span>Professional experts</li>
+          <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span>State-of-the-art surveillance</li>
+          <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span>Real-time access control</li>
+        </ul>
+      </div>
+      <div class="media">
+        <div class="drone-panel">
+          <!-- Replace with a drone photo -->
+          <svg class="drone" role="img" aria-label="Illustration of a security drone"><use href="#drone"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Unrivalled expertise ============ -->
+  <section aria-labelledby="expertise-h">
+    <div class="wrap">
+      <div class="expertise-head">
+        <h2 id="expertise-h">Unrivalled expertise</h2>
+        <div class="stack">
+          <p class="lead">Our team brings decades of hands-on experience in private security. Whatever the challenge, they know how to handle it calmly and quickly.</p>
+          <p class="lead">We protect private homes, large commercial sites and one-off events, with the same attention to detail every time.</p>
+        </div>
+      </div>
+
+      <!-- Wide photo: replace with a team or on-site photo -->
+      <div class="ph wide" role="img" aria-label="Placeholder for a photo of the Vantage security team on site">
+        <div class="ph-inner"><svg aria-hidden="true"><use href="#i-image"/></svg>Photo: security team on site</div>
+      </div>
+
+      <!-- Replace these numbers with your own -->
+      <div class="stats">
+        <div class="stat"><b>1,000+</b><span>Professionals</span></div>
+        <div class="stat"><b>52+</b><span>Cities</span></div>
+        <div class="stat"><b>5,000+</b><span>Families</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Swift response ============ -->
+  <section class="alt" aria-labelledby="response-h">
+    <div class="wrap split reverse">
+      <div>
+        <h2 id="response-h">Swift response, round-the-clock monitoring</h2>
+        <p class="lead" style="margin-top:20px">Security can't wait. Our monitoring centre is staffed every hour of every day, and each alert is checked straight away. Our trained responders act fast to keep your property and your family safe.</p>
+      </div>
+      <div class="media">
+        <!-- Replace with a photo of the 24/7 monitoring centre -->
+        <div class="ph ratio-54" role="img" aria-label="Placeholder for a photo of the 24/7 monitoring centre">
+          <div class="ph-inner"><svg aria-hidden="true"><use href="#i-image"/></svg>Photo: 24/7 monitoring centre</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Seamlessly integrated ============ -->
+  <section aria-labelledby="integrated-h">
+    <div class="wrap split">
+      <div>
+        <h2 id="integrated-h">Seamlessly integrated security</h2>
+        <p class="lead" style="margin-top:20px">Security should feel simple. Vantage brings everything into one platform. Connect your cameras, access control and alarms, then check and manage them from anywhere, at any time.</p>
+      </div>
+      <div class="media">
+        <!-- Replace with a photo or screenshot of the unified platform -->
+        <div class="ph ratio-54" role="img" aria-label="Placeholder for a photo or screenshot of the unified security platform">
+          <div class="ph-inner"><svg aria-hidden="true"><use href="#i-image"/></svg>Image: unified control platform</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Trusted and reliable ============ -->
+  <section class="alt" aria-labelledby="trusted-h">
+    <div class="wrap split reverse">
+      <div class="stack">
+        <h2 id="trusted-h">Trusted and reliable</h2>
+        <p class="lead">Trust is the foundation of everything we do, and our record shows it.</p>
+        <p class="lead">Honest advice, dependable service and strong ethics make us the first choice for individuals and businesses alike.</p>
+      </div>
+      <div class="media">
+        <!-- Replace with a photo of a guard, client handshake, or similar -->
+        <div class="ph ratio-54" role="img" aria-label="Placeholder for a photo showing trusted, reliable service">
+          <div class="ph-inner"><svg aria-hidden="true"><use href="#i-image"/></svg>Photo: trusted, reliable service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Custom solutions ============ -->
+  <section aria-labelledby="custom-h">
+    <div class="wrap">
+      <div class="expertise-head" style="margin-bottom:0">
+        <h2 id="custom-h">Custom solutions, perfectly aligned</h2>
+        <p class="lead">Every property is different, so we design security around yours and your budget. From a full corporate facility to a simple home camera setup, we work with you to get it right.</p>
+      </div>
+      <div class="cards">
+        <!-- Replace with a facility surveillance photo -->
+        <article class="ph card" aria-label="Facility surveillance">
+          <h3 class="card-title">Facility surveillance</h3>
+        </article>
+        <!-- Replace with a home camera photo -->
+        <article class="ph card" aria-label="Simple home surveillance">
+          <h3 class="card-title">Simple home surveillance</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Final CTA ============ -->
+  <section id="contact" class="cta alt" aria-labelledby="cta-h">
+    <div class="wrap">
+      <h2 id="cta-h">Ready for security you can count on?</h2>
+      <p class="lead">Tell us what you need to protect and we'll design the right plan with you.</p>
+      <!-- Swap the email below for your real contact address -->
+      <a href="mailto:hello@example.com" class="btn btn-primary btn-lg">Get started today <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="wrap foot">
+    <span>&copy; 2026 Vantage. All rights reserved.</span>
+    <div class="foot-links">
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <div class="social">
+        <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.3-8.3L2 3h6.3l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  (function(){
+    var btn = document.querySelector('.menu-btn');
+    var menu = document.getElementById('menu');
+    function setOpen(open){
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.classList.toggle('open', open);
+    }
+    btn.addEventListener('click', function(){ setOpen(btn.getAttribute('aria-expanded') !== 'true'); });
+    menu.addEventListener('click', function(e){ if (e.target.tagName === 'A') setOpen(false); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setOpen(false); });
+  })();
+</script>
+</body>
+</html>
